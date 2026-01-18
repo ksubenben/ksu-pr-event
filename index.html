@@ -101,4 +101,118 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            z-index
+            z-index: 6; 
+        }
+
+        .welcome-msg {
+            color: var(--text-blue);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .instruction {
+            color: #000000;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        /* 按鈕網格佈局 */
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 240px;
+            height: 45px;
+            text-decoration: none;
+            color: #000; 
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 2px;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-ai { background-color: var(--btn-orange-1); }
+        .btn-video { background-color: var(--btn-orange-2); }
+        .btn-voice { background-color: var(--btn-light-blue); }
+        .btn-office { background-color: var(--btn-dark-blue); color: #fff; }
+
+        /* 手機版適應 (RWD) 調整區 */
+        @media (max-width: 768px) {
+            .hero-section { height: 400px; }
+            .logo-container { left: 5%; top: 20px; }
+            .logo-container img { width: 140px; }
+            
+            .bg-text { font-size: 50px; }
+
+            /* 調整 Ideas：在人前面，避開臉部，不透明 */
+            .text-ideas {
+                z-index: 7;      
+                top: 65%;        
+                right: 15%;      
+                opacity: 1;      
+            }
+
+            /* 調整 Impact：在人後面，下移讓字體可辨識 */
+            .text-impact {
+                z-index: 2;      
+                top: 72%;        
+                left: 5%;        
+                opacity: 1;
+            }
+            
+            .text-insight { top: 12%; right: 5%; }
+
+            .student-img { 
+                height: 90%; 
+                bottom: -40px; 
+                z-index: 5;
+            }
+            
+            .content-section { padding-top: 80px; }
+            .instruction { font-size: 1.2rem; }
+            .nav-button { width: 100%; max-width: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="logo-container">
+            <img src="logo.png" alt="崑山科技大學 公共關係暨廣告系">
+        </div>
+
+        <div class="bg-text text-insight">Insight</div>
+        <div class="bg-text text-ideas">Ideas</div>
+        <div class="bg-text text-impact">Impact</div>
+
+        <img src="student.png" alt="Students" class="student-img">
+    </header>
+
+    <main class="content-section">
+        <p class="welcome-msg">歡迎來到崑山科大公廣系參訪體驗</p>
+        <h2 class="instruction">請選擇您想體驗的項目開始操作</h2>
+
+        <div class="button-grid">
+            <a href="https://script.google.com/macros/s/AKfycbybcTx9hwx8HYtwAUZDUCsWh9JbQeA1W5OPxfAY_1W3tRQu0b_0o9thrByINit3aKRz/exec" class="nav-button btn-ai" target="_blank">AI實習創意總監</a>
+            <a href="https://script.google.com/macros/s/AKfycbzdaffAmfH2oNh1XqryNIf7KPeoZXPOEuDvm2volH5DQ3nBWsvQC98_t24Jssf5EZnhew/exec" class="nav-button btn-video" target="_blank">短影音名片</a>
+            <a href="https://script.google.com/macros/s/AKfycbynoPhwZGzQwt1Q9hKKOOCoaPCpZH1QUPlCrgY-7L7TwtIwwjQKgd69jifFgakBTnFr/exec" class="nav-button btn-voice" target="_blank">聲音網紅體驗</a>
+            <a href="https://script.google.com/macros/s/AKfycbyFL-rI5w5Vdr4Hi99cDFvZC65VDC2bZ0CJkOZwd5om2Qh3nq-NWsZrav5c8G9AgHqy/exec" class="nav-button btn-office" target="_blank">公廣靈魂事務所</a>
+        </div>
+    </main>
+
+</body>
+</html>
