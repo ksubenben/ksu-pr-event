@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>崑山科技大學 公共關係暨廣告系 - 參訪體驗</title>
     <style>
-        /* 基礎設定 (維持不變) */
+        /* 基礎設定 */
         :root {
             --bg-gradient-start: #3176b1;
             --bg-gradient-end: #51b3d6;
@@ -25,26 +25,21 @@
 
         body {
             background-color: #ffffff;
-            /* 確保橫向不會出現捲軸 */
             overflow-x: hidden;
         }
 
-        /* ▼▼▼ 重要修改：Header 區域 ▼▼▼ */
-        /* 修改邏輯：這個容器本身變成一個透明的定位框，不負責背景色和裁切 */
+        /* Header 區域設定 */
         .hero-section {
             position: relative;
             width: 100%;
             height: 500px;
-            /* background 和 clip-path 移除了 */
             display: flex;
             justify-content: center;
             align-items: center;
-            /* 確保內容層級高於偽元素背景 */
             z-index: 1; 
         }
 
-        /* ▼▼▼ 新增：偽元素背景層 ▼▼▼ */
-        /* 這是真正負責藍色漸層和斜線的「底層」 */
+        /* 偽元素背景層 (負責藍色斜線) */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -54,11 +49,10 @@
             height: 100%;
             background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
             clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-            /* 放在最底層，但在內容之下 */
             z-index: -1; 
         }
 
-        /* Logo 區域 (維持不變) */
+        /* Logo 區域 */
         .logo-container {
             position: absolute;
             top: 40px;
@@ -72,7 +66,7 @@
             display: block;
         }
 
-        /* 背景裝飾文字 (維持不變) */
+        /* 背景裝飾文字通用設定 */
         .bg-text {
             position: absolute;
             color: rgba(255, 255, 255, 0.95);
@@ -82,168 +76,29 @@
             pointer-events: none;
         }
 
+        /* 電腦版文字位置 */
         .text-insight { top: 15%; right: 15%; z-index: 2; }
         .text-impact { bottom: 20%; left: 15%; z-index: 2; }
-        .text-ideas { top: 45%; right: 25%; z-index: 7; }
+        .text-ideas { top: 45%; right: 25%; z-index: 7; } /* 電腦版在人前面 */
 
-        /* ▼▼▼ 重要修改：中央人物圖片 ▼▼▼ */
+        /* 中央人物圖片 */
         .student-img {
             position: absolute;
-            /* 修改：加大負值，讓腳超出藍色區域更多 */
             bottom: -80px; 
             left: 50%;
             transform: translateX(-50%);
             width: auto;
-            /* 修改：稍微加大高度比例，增加張力 */
             height: 105%; 
-            z-index: 5;
+            z-index: 5; /* 人物在中間層 */
             object-fit: contain;
-            /* 確保圖片不會被滑鼠事件擋住下方的按鈕（以防萬一） */
             pointer-events: none; 
         }
 
-        /* 下方內容區域 (需要增加上方邊距，避免被人物的腳擋住) */
+        /* 下方內容區域 */
         .content-section {
-            /* 修改：增加上方 padding，留空間給突出的人物腳部 */
             padding: 100px 20px 60px 20px; 
             text-align: center;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            z-index: 6; /* 確保內容在人物圖層之上(如果需要)或之下，這邊設高一點確保按鈕能點 */
-        }
-
-        .welcome-msg {
-            color: var(--text-blue);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .instruction {
-            color: #000000;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 40px;
-        }
-
-        /* 按鈕網格佈局 (維持不變) */
-        .button-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .nav-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 240px;
-            height: 45px;
-            text-decoration: none;
-            color: #000; /* 預設黑色文字 */
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-radius: 2px;
-        }
-
-        .nav-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .btn-ai { background-color: var(--btn-orange-1); }
-        .btn-video { background-color: var(--btn-orange-2); }
-        .btn-voice { background-color: var(--btn-light-blue); }
-        .btn-office { background-color: var(--btn-dark-blue); color: #fff; }
-
-       /* 手機版適應 (RWD) 調整區 */
-@media (max-width: 768px) {
-    .hero-section { height: 400px; }
-    .logo-container { left: 5%; top: 20px; }
-    .logo-container img { width: 140px; }
-    
-    .bg-text { font-size: 50px; }
-
-    /* ▼▼▼ 調整 Ideas：不透明且避開人臉 ▼▼▼ */
-    .text-ideas {
-        z-index: 7;      /* 維持在人像前方 */
-        top: 65%;        /* 往下移，避開臉部 */
-        right: 15%;      /* 往中間靠攏 */
-        opacity: 1;      /* 設定為 1，代表完全不透明 */
-    }
-    /* ▲▲▲ 修改結束 ▲▲▲ */
-    
-    .text-insight { top: 12%; right: 5%; }
-    .text-impact { bottom: 15%; left: 5%; }
-
-    .student-img { 
-        height: 90%; 
-        bottom: -40px; 
-    }
-    
-    .content-section { padding-top: 60px; }
-    .instruction { font-size: 1.2rem; }
-    .nav-button { width: 100%; max-width: 300px; }
-}
-            
-            /* 微調另外兩個文字的位置，保持平衡 */
-            .text-insight { top: 12%; right: 5%; }
-            .text-impact { bottom: 15%; left: 5%; }
-
-            /* 手機版人物調整 */
-            .student-img { 
-                height: 90%; 
-                bottom: -40px; 
-            }
-            
-            /* 手機版下方內容間距調整 */
-            .content-section {
-                 padding-top: 60px;
-            }
-
-            .instruction { font-size: 1.2rem; }
-            .nav-button { width: 100%; max-width: 300px; }
-        }
-        /* ▲▲▲ 手機版適應 (RWD) 調整區 - 結束複製取代 ▲▲▲ */
-    .student-img { 
-        height: 80%; 
-        bottom: -30px; 
-    }
-    
-    .content-section { padding-top: 60px; }
-    .instruction { font-size: 1.2rem; }
-    .nav-button { width: 100%; max-width: 300px; }
-}
-    </style>
-</head>
-<body>
-
-    <header class="hero-section">
-        <div class="logo-container">
-            <img src="logo.png" alt="崑山科技大學 公共關係暨廣告系">
-        </div>
-
-        <div class="bg-text text-insight">Insight</div>
-        <div class="bg-text text-ideas">Ideas</div>
-        <div class="bg-text text-impact">Impact</div>
-
-        <img src="student.png" alt="Students" class="student-img">
-    </header>
-
-    <main class="content-section">
-        <p class="welcome-msg">歡迎來到崑山科大公廣系參訪體驗</p>
-        <h2 class="instruction">請選擇您想體驗的項目開始操作</h2>
-
-        <div class="button-grid">
-            <a href="https://script.google.com/macros/s/AKfycbybcTx9hwx8HYtwAUZDUCsWh9JbQeA1W5OPxfAY_1W3tRQu0b_0o9thrByINit3aKRz/exec" class="nav-button btn-ai" target="_blank">AI實習創意總監</a>
-            <a href="https://script.google.com/macros/s/AKfycbzdaffAmfH2oNh1XqryNIf7KPeoZXPOEuDvm2volH5DQ3nBWsvQC98_t24Jssf5EZnhew/exec" class="nav-button btn-video" target="_blank">短影音名片</a>
-            <a href="https://script.google.com/macros/s/AKfycbynoPhwZGzQwt1Q9hKKOOCoaPCpZH1QUPlCrgY-7L7TwtIwwjQKgd69jifFgakBTnFr/exec" class="nav-button btn-voice" target="_blank">聲音網紅體驗</a>
-            <a href="https://script.google.com/macros/s/AKfycbyFL-rI5w5Vdr4Hi99cDFvZC65VDC2bZ0CJkOZwd5om2Qh3nq-NWsZrav5c8G9AgHqy/exec" class="nav-button btn-office" target="_blank">公廣靈魂事務所</a>
-        </div>
-    </main>
-
-</body>
-</html>
+            z-index
