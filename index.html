@@ -159,17 +159,43 @@
         .btn-voice { background-color: var(--btn-light-blue); }
         .btn-office { background-color: var(--btn-dark-blue); color: #fff; }
 
-        /* 手機版適應 (RWD) */
-        @media (max-width: 768px) {
-            .hero-section { height: 400px; }
-            .logo-container { left: 5%; top: 20px; }
-            .logo-container img { width: 140px; }
-            .bg-text { font-size: 50px; }
+       /* 手機版適應 (RWD) 調整區 */
+@media (max-width: 768px) {
+    .hero-section { height: 400px; }
+    .logo-container { left: 5%; top: 20px; }
+    .logo-container img { width: 140px; }
+    
+    .bg-text { font-size: 50px; }
+
+    /* ▼▼▼ 調整 Ideas：不透明且避開人臉 ▼▼▼ */
+    .text-ideas {
+        z-index: 7;      /* 維持在人像前方 */
+        top: 65%;        /* 往下移，避開臉部 */
+        right: 15%;      /* 往中間靠攏 */
+        opacity: 1;      /* 設定為 1，代表完全不透明 */
+    }
+    /* ▲▲▲ 修改結束 ▲▲▲ */
+    
+    .text-insight { top: 12%; right: 5%; }
+    .text-impact { bottom: 15%; left: 5%; }
+
+    .student-img { 
+        height: 90%; 
+        bottom: -40px; 
+    }
+    
+    .content-section { padding-top: 60px; }
+    .instruction { font-size: 1.2rem; }
+    .nav-button { width: 100%; max-width: 300px; }
+}
             
+            /* 微調另外兩個文字的位置，保持平衡 */
+            .text-insight { top: 12%; right: 5%; }
+            .text-impact { bottom: 15%; left: 5%; }
+
             /* 手機版人物調整 */
             .student-img { 
                 height: 90%; 
-                /* 手機版不需要突出那麼多，稍微收一點 */
                 bottom: -40px; 
             }
             
@@ -181,6 +207,16 @@
             .instruction { font-size: 1.2rem; }
             .nav-button { width: 100%; max-width: 300px; }
         }
+        /* ▲▲▲ 手機版適應 (RWD) 調整區 - 結束複製取代 ▲▲▲ */
+    .student-img { 
+        height: 80%; 
+        bottom: -30px; 
+    }
+    
+    .content-section { padding-top: 60px; }
+    .instruction { font-size: 1.2rem; }
+    .nav-button { width: 100%; max-width: 300px; }
+}
     </style>
 </head>
 <body>
