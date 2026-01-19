@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>崑山科技大學 公共關係暨廣告系 - 參訪體驗</title>
+    <title>崑山科技大學 公共關係暨廣告系 - 參訪體驗導覽</title>
     <style>
-        /* 基礎設定 */
+        /* 基礎變數設定 */
         :root {
             --bg-gradient-start: #3176b1;
             --bg-gradient-end: #51b3d6;
@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* Header 區域設定 */
+        /* Header 斜線背景區域 */
         .hero-section {
             position: relative;
             width: 100%;
@@ -39,7 +39,6 @@
             z-index: 1; 
         }
 
-        /* 偽元素背景層 (負責藍色斜線) */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -66,7 +65,7 @@
             display: block;
         }
 
-        /* 背景裝飾文字通用設定 */
+        /* 裝飾文字通用樣式 */
         .bg-text {
             position: absolute;
             color: rgba(255, 255, 255, 0.95);
@@ -76,12 +75,12 @@
             pointer-events: none;
         }
 
-        /* 電腦版文字位置 */
+        /* 電腦版文字位置與層次 */
         .text-insight { top: 15%; right: 15%; z-index: 2; }
         .text-impact { bottom: 20%; left: 15%; z-index: 2; }
-        .text-ideas { top: 45%; right: 25%; z-index: 7; } /* 電腦版在人前面 */
+        .text-ideas { top: 45%; right: 25%; z-index: 7; } /* 位於人前 */
 
-        /* 中央人物圖片 */
+        /* 中央人物圖片 (破格設計) */
         .student-img {
             position: absolute;
             bottom: -80px; 
@@ -89,12 +88,12 @@
             transform: translateX(-50%);
             width: auto;
             height: 105%; 
-            z-index: 5; /* 人物在中間層 */
+            z-index: 5; /* 位於中間層 */
             object-fit: contain;
             pointer-events: none; 
         }
 
-        /* 下方內容區域 */
+        /* 下方內容與按鈕區 */
         .content-section {
             padding: 100px 20px 60px 20px; 
             text-align: center;
@@ -118,7 +117,6 @@
             margin-bottom: 40px;
         }
 
-        /* 按鈕網格佈局 */
         .button-grid {
             display: flex;
             flex-wrap: wrap;
@@ -150,15 +148,14 @@
         .btn-voice { background-color: var(--btn-light-blue); }
         .btn-office { background-color: var(--btn-dark-blue); color: #fff; }
 
-        /* 手機版適應 (RWD) 調整區 */
+        /* 手機版適應 (RWD) 視覺微調 */
         @media (max-width: 768px) {
             .hero-section { height: 400px; }
             .logo-container { left: 5%; top: 20px; }
             .logo-container img { width: 140px; }
-            
             .bg-text { font-size: 50px; }
 
-            /* 調整 Ideas：在人前面，避開臉部，不透明 */
+            /* 手機版 Ideas：維持人前，不透明，下移避臉 */
             .text-ideas {
                 z-index: 7;      
                 top: 65%;        
@@ -166,7 +163,7 @@
                 opacity: 1;      
             }
 
-            /* 調整 Impact：在人後面，下移讓字體可辨識 */
+            /* 手機版 Impact：位於人後，位置下移增加可辨識度 */
             .text-impact {
                 z-index: 2;      
                 top: 72%;        
@@ -208,8 +205,11 @@
 
         <div class="button-grid">
             <a href="https://script.google.com/macros/s/AKfycbybcTx9hwx8HYtwAUZDUCsWh9JbQeA1W5OPxfAY_1W3tRQu0b_0o9thrByINit3aKRz/exec" class="nav-button btn-ai" target="_blank">AI實習創意總監</a>
-            <a href="https://script.google.com/macros/s/AKfycbzdaffAmfH2oNh1XqryNIf7KPeoZXPOEuDvm2volH5DQ3nBWsvQC98_t24Jssf5EZnhew/exec" class="nav-button btn-video" target="_blank">短影音名片</a>
+            
+            <a href="https://script.google.com/macros/s/AKfycbzb0Wth_3pvMy30tqrGOzkOBaLHjjBfQCD2SYzAulKd-DC7gU95EdkKuNhqy8TFR_RE1w/exec" class="nav-button btn-video" target="_blank">短影音名片</a>
+            
             <a href="https://script.google.com/macros/s/AKfycbynoPhwZGzQwt1Q9hKKOOCoaPCpZH1QUPlCrgY-7L7TwtIwwjQKgd69jifFgakBTnFr/exec" class="nav-button btn-voice" target="_blank">聲音網紅體驗</a>
+            
             <a href="https://script.google.com/macros/s/AKfycbyFL-rI5w5Vdr4Hi99cDFvZC65VDC2bZ0CJkOZwd5om2Qh3nq-NWsZrav5c8G9AgHqy/exec" class="nav-button btn-office" target="_blank">公廣靈魂事務所</a>
         </div>
     </main>
